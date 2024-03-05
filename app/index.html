@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hub de Comentários</title>
+    <style>
+        .comentarios {
+            text-align: left;
+            width: 400px;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            color: brown;
+            font-weight: bolder;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: antiquewhite;
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="comentarios" id="form-comentario">
+        <h3>Novo Comentário</h3>
+        <form onsubmit="submitComment(event)">
+            <label for="autor">Autor</label>
+            <input type="text" name="autor" id="autor">
+            <label for="">Digite seu comentário</label>
+            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+            <input type="submit" class="btn-submit" value="Enviar">
+        </form>
+    </div>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
