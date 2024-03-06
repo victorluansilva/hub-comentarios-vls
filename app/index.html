@@ -4,34 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Hub de Comentários</title>
-    <style>
-        .comentarios {
-            text-align: left;
-            width: 400px;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            color: brown;
-            font-weight: bolder;
-            border: 3px solid black;
-            border-radius: 10px;
-            background-color: antiquewhite;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div class="comentarios" id="form-comentario">
         <h3>Novo Comentário</h3>
-        <form onsubmit="submitComment(event)">
+        <form id="formComment">
             <label for="autor">Autor</label>
-            <input type="text" name="autor" id="autor">
-            <label for="">Digite seu comentário</label>
-            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
-            <input type="submit" class="btn-submit" value="Enviar">
+            <input type="text" name="autor" id="inputAuthor" required>
+            <label for="comentario">Digite seu comentário</label>
+            <textarea name="comentario" id="inputComment" cols="30" rows="10" required></textarea>
+            <button type="submit" class="btn-submit">Enviar</button>
         </form>
     </div>
+
+    <div class="comentarios my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+        <div class="d-flex text-body-secondary pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff"
+                    dy=".3em">32x32</text>
+            </svg>
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@username</strong>
+                Some representative placeholder content, with some information about this user. Imagine this being some
+                sort of status update, perhaps?
+            </p>
+        </div>
+        <div class="d-flex text-body-secondary pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#e83e8c"></rect><text x="50%" y="50%" fill="#e83e8c"
+                    dy=".3em">32x32</text>
+            </svg>
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@username</strong>
+                Some more representative placeholder content, related to this other user. Another status update,
+                perhaps.
+            </p>
+        </div>
+        <div class="d-flex text-body-secondary pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#6f42c1"></rect><text x="50%" y="50%" fill="#6f42c1"
+                    dy=".3em">32x32</text>
+            </svg>
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@username</strong>
+                This user also gets some representative placeholder content. Maybe they did something interesting, and
+                you really want to highlight this in the recent updates.
+            </p>
+        </div>
+        <small class="d-block text-end mt-3">
+            <a href="#">All updates</a>
+        </small>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script type="module" src="./script.js"></script>
 </body>
 
