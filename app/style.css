@@ -1,4 +1,8 @@
-.comentarios {
+body {
+    font-family: Arial, sans-serif;
+}
+
+.comments {
     text-align: left;
     width: 400px;
     max-width: 400px;
@@ -11,11 +15,11 @@
     background-color: antiquewhite;
 }
 
-.comentarios *{
+.comments *{
     display: block;
 }
 
-.comentarios label {
+.comments label {
     margin-top: 10px;
     margin-bottom: 10px;
 }
