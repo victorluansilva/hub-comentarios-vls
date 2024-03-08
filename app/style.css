@@ -41,3 +41,9 @@ body {
     margin: 10px auto 0px auto;
     padding: 10px auto 0px auto;
 }
+
+.date-style{
+    display: inline;
+    font-size: smaller;
+    height: fit-content;
+}

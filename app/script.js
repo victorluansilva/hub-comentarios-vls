@@ -22,6 +22,19 @@ const loadComment = () => {
     }
 }
 
+const getCurrentDataAndTime = () =>{
+    const currentDate = new Date();
+    const options = { 
+        day: '2-digit',
+        month: 'short',
+        hour: 'numeric',
+        hour12: false
+    };
+
+    let formattedDate = currentDate.toLocaleDateString('pt-BR',options)
+    return formattedDate.replace(',', ' às') + 'hs';
+}
+
 const displayComment = () => {
     const divFeed = document.getElementById('comment-feed');
     divFeed.innerHTML = ``
@@ -37,7 +50,9 @@ const displayComment = () => {
                     dy=".3em">32x32</text>
             </svg>
             <p class="pb-3 mb-0 small lh-sm border-bottom">
-                <strong class="d-block text-gray-dark">@${item.author}</strong>
+                <strong class="d-block text-gray-dark">@${item.author}
+                <span class="date-style badge text-bg-secondary">${getCurrentDataAndTime()}</span>
+                </strong>
                 ${item.comment}
             </p>        
         `
