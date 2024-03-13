@@ -6,11 +6,11 @@ body {
     text-align: left;
     width: 400px;
     max-width: 400px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     color: brown;
     font-weight: bolder;
-    border: 3px solid black;
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
     border-radius: 10px;
 }
 
@@ -27,14 +27,19 @@ body {
     display: block;
     color: rgb(17, 35, 41);
     border-radius: 5px;
-    border: 1px solid black;
+    border: none;
     background-color: antiquewhite;
+    padding: 5px;
 }
 
 #form-comentario .btn-submit{
     margin-top: 25px;
     padding: 10px;
     width: 100px;
+}
+
+#form-comentario{
+    height: fit-content;
 }
 
 #form-comentario form{
