@@ -4,16 +4,19 @@ const CommentService = {
   apiGetComment: () => {
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/comment`)
-        .then((response) => response.json)
+        .then(response => response.json())
         .then(data => {
           if (data.success) {
             resolve(data.comment);
           } else {
-            reject("Erro na requisição");
+            reject(data.error);
           }
+        })
+        .catch(error => {
+          reject('Erro na requisição AJAX:', error);
         });
-    }).catch((error) => {
-      reject(error);
     });
   },
 };
+
+export {CommentService}
