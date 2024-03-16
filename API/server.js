@@ -37,6 +37,16 @@ server.get('/comment', (req, res) => {
         res.json({ success: true, comment: results });
     });
 });
+server.get('/user', (req, res) => {
+    db.query('SELECT * FROM user', (err, results) => {
+        if (err) {
+            res.status(500).json({ success: false, error: 'Internal server error' });
+            return;
+        }
+
+        res.json({ success: true, user: results });
+    });
+});
 
 server.listen(PORT, () =>{
     console.log(`O server está rodando em http:\\localhost:${PORT}`)
