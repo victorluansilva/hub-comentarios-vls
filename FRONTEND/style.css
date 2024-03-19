@@ -23,6 +23,7 @@ body {
     margin-bottom: 10px;
 }
 
+#login-form,
 #form-comentario textarea, input {
     display: block;
     color: rgb(17, 35, 41);
@@ -38,6 +39,7 @@ body {
     width: 100px;
 }
 
+#login-form,
 #form-comentario{
     height: fit-content;
 }

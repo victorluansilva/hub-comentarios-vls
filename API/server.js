@@ -39,10 +39,7 @@ server.get('/comment', (req, res) => {
 });
 server.get('/user', (req, res) => {
     db.query('SELECT * FROM user', (err, results) => {
-        if (err) {
-            res.status(500).json({ success: false, error: 'Internal server error' });
-            return;
-        }
+
 
         res.json({ success: true, user: results });
     });
