@@ -1,6 +1,6 @@
 import { User } from "../models/user.model.js";
 
-import { LoginService } from "./services/login.service.js";
+import { LoginService } from "../services/login.services.js";
 
 const getLoginInputs = () => {
     return {
@@ -30,6 +30,7 @@ const handleLogin = (event) => {
     LoginService.apiAuthUser(user).then(result => {
         console.log(result)
         user.setId(result.id);
+        user.setPassword(null);
         user.setFirstname(result.firstname);
         user.setLastname(result.lastname);
         handleShowHide();
