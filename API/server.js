@@ -44,6 +44,12 @@ server.post('/login', (req, res) => {
     })
 })
 
+server.get('/user', (req, res) => {
+    db.query('SELECT * FROM user', (err, results) => {
+        res.json({ success: true, user: results });
+    });
+});
+
 server.get('/comment', (req, res) => {
     db.query('SELECT * FROM comment', (err, results) => {
         if (err) {
@@ -52,13 +58,6 @@ server.get('/comment', (req, res) => {
         }
 
         res.json({ success: true, comment: results });
-    });
-});
-server.get('/user', (req, res) => {
-    db.query('SELECT * FROM user', (err, results) => {
-
-
-        res.json({ success: true, user: results });
     });
 });
 

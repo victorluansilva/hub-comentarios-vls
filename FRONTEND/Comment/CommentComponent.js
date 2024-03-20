@@ -1,6 +1,9 @@
 import { formatDate } from "../utils.js";
 import { CommentService } from '../services/comment.services.js'
 import { Comment } from "../models/comment.model.js";
+import { User } from "../models/user.model.js";
+
+let _user = new User()
 
 const getInputComment = () => {
     return {
@@ -72,7 +75,6 @@ const displayComment = (comments) => {
     })
 }
 
-
 const CommentComponent = {
     run: () => {
         const formComentario = document.getElementById('formComment')
@@ -80,6 +82,9 @@ const CommentComponent = {
         window.onload = () => {
             loadComment();
         }
+    },
+    params: (usr) => {
+        _user = usr;
     }
 }
 
