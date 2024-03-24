@@ -1,5 +1,4 @@
 import { User } from "../models/user.model.js";
-
 import { LoginService } from "../services/login.services.js";
 
 const getLoginInputs = () => {
@@ -25,6 +24,7 @@ const handleShowHide = () => {
 const handleLogin = (event) => {
     event.preventDefault();
     const { username, password } = getLoginInputs();
+    
     const user = new User(null, username.value, password.value)
 
     LoginService.apiAuthUser(user).then(result => {
@@ -33,6 +33,13 @@ const handleLogin = (event) => {
         user.setPassword(null);
         user.setFirstname(result.firstname);
         user.setLastname(result.lastname);
+        
+        const inputAuthor = document.getElementById('inputAuthor');
+        inputAuthor.value = result.firstname + ' ' + result.lastname;
+        inputAuthor.disabled = true;
+        inputAuthor.style.backgroundColor = '#444'
+        inputAuthor.style.color = '#FFF'
+        
         handleShowHide();
     }).catch(error => {
         alert(`Login inválido. Erro:${error.message}`)
