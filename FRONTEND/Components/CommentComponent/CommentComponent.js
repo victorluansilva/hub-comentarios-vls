@@ -1,9 +1,8 @@
-import { formatDate } from "../utils.js";
-import { CommentService } from '../services/comment.services.js'
-import { Comment } from "../models/comment.model.js";
-import { User } from "../models/user.model.js";
+import { formatDate, randomColors } from "../../utils.js";
+import { CommentService } from '../../services/comment.services.js'
+import { Comment } from "../../models/comment.model.js";
+import { User } from "../../models/user.model.js";
 
-import { randomColors } from "../utils.js";
 
 let _user = new User()
 

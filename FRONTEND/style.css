@@ -71,3 +71,42 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
+.btn {
+    color:white;
+    background-color: rgb(100,42,42);
+}
+.feed{
+    max-height: 80vh;
+} 
+#comment-feed{
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 10px auto 0px auto;
+}
+
+#comment-feed::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+
+#comment-feed::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #c2c9d2;
+}
+
+header{
+    height: 10vh;
+    max-height: 10vh;
+}
+
+#user-profile {
+    float: right;
+    margin: 20px 20px auto auto !important;
+}
+
+#user-profile p{
+    margin: 5px 5px;
+}
+
