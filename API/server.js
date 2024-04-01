@@ -30,18 +30,18 @@ db.connect((err) => {
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
     db.query('SELECT * FROM user WHERE username = ? AND password = ?',
-     [username, password], (err, results) => {
-        if (err) {
-            res.status(500).json({ success: false, error: 'Internal server error' });
-            return;
-        }
-        if (results.length > 0) {
-            const { id, username, firstname, lastname } = results[0];
-            res.json({ success: true, user: { id, username, firstname, lastname } });
-        } else {
-            res.json({ success: false, error: 'Usuário ou senha inválidos' });
-        }
-    })
+        [username, password], (err, results) => {
+            if (err) {
+                res.status(500).json({ success: false, error: 'Internal server error' });
+                return;
+            }
+            if (results.length > 0) {
+                const { id, username, firstname, lastname } = results[0];
+                res.json({ success: true, user: { id, username, firstname, lastname } });
+            } else {
+                res.json({ success: false, error: 'Usuário ou senha inválidos' });
+            }
+        })
 })
 
 server.get('/user', (req, res) => {
@@ -51,21 +51,28 @@ server.get('/user', (req, res) => {
 });
 
 server.get('/comment', (req, res) => {
-    db.query('SELECT * FROM comment', (err, results) => {
+    const queryByUser = `SELECT comment.id,
+                            user.username as author,
+                            comment.comment_text,
+                            comment.created_at,
+                            comment.updated_at
+                        FROM comment
+                    INNER JOIN user ON comment.userId = user.id
+                    ORDER BY comment.updated_at DESC;`
+    // const queryList = `SELECT * FROM comment`
+    db.query(queryByUser, (err, results) => {
         if (err) {
-            res.status(500).json({ success: false, error: 'Internal server error' });
-            return;
+            return res.status(500).json({ success: false, error: 'Internal server error' });
         }
-
         res.json({ success: true, comment: results });
     });
 });
 
 // ADICIONAR COMMENT
 
-server.post('/new-comment', (req, res) => {
-    const { author , comment_text} = req.body;
-    db.query('INSERT INTO comment (author, comment_text) VALUES (?, ?)', [author,comment_text], (err, result) =>{
+server.post('/comment', (req, res) => {
+    const { author, comment_text } = req.body;
+    db.query('INSERT INTO comment (author, comment_text) VALUES (?, ?)', [author, comment_text], (err, result) => {
         if (err) {
             res.status(500).json({ success: false, error: 'Internal server error' });
             return;

@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `comment-hub` /*!40100 DEFAULT CHARACTER SET utf8
 USE `comment-hub`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: comment-hub
+-- Host: localhost    Database: comment-hub
 -- ------------------------------------------------------
 -- Server version	8.0.36
 
@@ -18,30 +18,30 @@ USE `comment-hub`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comment`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comment` (
+CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `author` varchar(45) NOT NULL,
-  `comment_text` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comment`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,'Victor','Este é o comentário de teste','2024-03-13 00:54:34','2024-03-13 00:54:34');
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'victorls','vls1234','Victor','Silva'),(2,'joaobosco','jb1234','João','Bosco'),(3,'joaolucas','jl1234','João','Lucas'),(4,'cauca','c1234','Cauã','Cruz'),(5,'isaac','isa1234','Isaac','Rodrigues'),(6,'giganteleo','leo1234','Leonardo','Vicioso'),(7,'maique','m1234','Maicon','Gois');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-13 19:53:06
+-- Dump completed on 2024-04-01 19:48:15
