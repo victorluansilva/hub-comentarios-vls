@@ -22,23 +22,17 @@
                 this.lastname = null;
             }
         }
-
         getId() {
             return this.id;
         }
-        
         setId(value) {
             this.id = value;
         }
-
         getUsername() {
             return this.username;
         }
         setUsername(value) {
             this.username = value;
-        }
-        getPassword() {
-            return this.password;
         }
         setPassword(value) {
             this.password = value;

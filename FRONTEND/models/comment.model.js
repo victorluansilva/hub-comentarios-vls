@@ -15,6 +15,13 @@ class Comment {
             this.comment_text = comment_text
             this.created_at = null;
             this.updated_at = null;
+        } else if (author !== undefined, comment_text !== undefined) {
+            this.id = null;
+            this.userId = null;
+            this.author = author;
+            this.comment_text = comment_text
+            this.created_at = null;
+            this.updated_at = null;
         } else {
             this.id = null;
             this.userId = null;
@@ -30,7 +37,6 @@ class Comment {
     getUserId() {
         return this.userId;
     }
-
     getAuthor() {
         return this.author;
     }
