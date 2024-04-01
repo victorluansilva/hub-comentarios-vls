@@ -50,6 +50,7 @@ server.get('/user', (req, res) => {
     });
 });
 
+// LISTAR COMENTÁRIOS
 server.get('/comment', (req, res) => {
     const queryByUser = `SELECT comment.id,
                             user.username as author,
