@@ -71,11 +71,10 @@ server.get('/comment', (req, res) => {
 // ADICIONAR COMMENT
 
 server.post('/comment', (req, res) => {
-    const { author, comment_text } = req.body;
-    db.query('INSERT INTO comment (author, comment_text) VALUES (?, ?)', [author, comment_text], (err, result) => {
+    const { userId, comment_text } = req.body;
+    db.query('INSERT INTO comment (userId, comment_text) VALUES (?, ?)', [userId, comment_text], (err, result) => {
         if (err) {
-            res.status(500).json({ success: false, error: 'Internal server error' });
-            return;
+            return res.status(500).json({ success: false, error: 'Internal server error' });
         }
         res.json({ success: true });
     })
