@@ -49,7 +49,7 @@ const displayUserData = (user) => {
         <div class="col-4">
             <label class="form-label" for="user_password">Senha</label>
             <input class="form-control" type="password" name="user_password" id="user_password"
-                value="${user.getPassword()}" readonly>
+                value="........" readonly>
         </div>
     </div>`
 
