@@ -1,19 +1,20 @@
 import { User } from "../models/user.model.js";
 
-const StoragedItems = {
+const StorageServices = {
     user: {
-        store: (user) =>{
+        store: (user) => {
             try {
                 const storeAsJSON = JSON.stringify(user);
-                localStorage.setItem('user', storeAsJSON);        
+                localStorage.setItem('user', storeAsJSON);
             } catch (error) {
                 console.error(error)
             }
         },
-        get:() =>{
+        get: () => {
             try {
                 if (localStorage.getItem('user')) {
-                    const user = new User(JSON.parse(localStorage.getItem('user')));
+                    const result = JSON.parse(localStorage.getItem('user'));
+                    const user = new User(result.id, result.username, null, result.firstname, result.lastname);
                     return user;
                 } else {
                     console.log('User not found')
@@ -23,12 +24,12 @@ const StoragedItems = {
                 console.error(error)
             }
         },
-        remove:() =>{
+        remove: () => {
             localStorage.removeItem('user');
         }
     }
 }
 
-export { StoragedItems }
+export { StorageServices }
 
 
