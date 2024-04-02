@@ -1,8 +1,9 @@
+import { StorageServices } from "../../services/localStorage.service.js";
 import { randomColors } from "../../utils.js";
-import { getCurrentUser } from "../LoginComponent/LoginComponent.js"
 
 const loadUserData = () => {
-    displayUserData(getCurrentUser())
+
+    displayUserData(StorageServices.user.get())
 }
 
 const iconeUsuario = (avatarColor) => {

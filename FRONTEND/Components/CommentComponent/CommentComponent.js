@@ -4,8 +4,6 @@ import { Comment } from "../../models/comment.model.js";
 import { User } from "../../models/user.model.js";
 
 
-let _user = new User()
-
 const getInputComment = () => {
     return {
         author: document.getElementById('inputAuthor'),
@@ -17,6 +15,13 @@ const setInputComment = (authorValue, commentValue) => {
     const { author, comment } = getInputComment();
     author.value = authorValue
     comment.value = commentValue
+}
+
+const setAuthorCommentField = (usr) => {
+    const inputAuthor = document.getElementById('inputAuthor');
+    inputAuthor.value = usr.firstname + ' ' + usr.lastname;
+    inputAuthor.style.backgroundColor = '#444'
+    inputAuthor.style.color = '#FFF'
 }
 
 const clearCommentField = () => {
@@ -93,9 +98,6 @@ const CommentComponent = {
             loadComment();
         }
     },
-    params: (usr) => {
-        _user = usr;
-    }
 }
 
-export { CommentComponent, setInputComment }
+export { CommentComponent, setInputComment, setAuthorCommentField }
