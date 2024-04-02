@@ -1,11 +1,11 @@
 import { formatDate, randomColors } from "../../utils.js";
 import { CommentService } from '../../services/comment.services.js'
 import { Comment } from "../../models/comment.model.js";
-import { User } from "../../models/user.model.js";
+import { StorageServices } from "../../services/localStorage.service.js";
 
 
 const getCommentInput = () => {
-    return document.getElementById('inputComment')  
+    return document.getElementById('inputComment')
 }
 const getInputCommentValue = () => {
     return document.getElementById('inputComment').value
@@ -15,8 +15,7 @@ const setInputComment = (commentValue) => {
     comment.value = commentValue
 }
 const clearCommentField = () => {
-    const { comment } = getCommentInput();
-    comment.value = ''
+    getCommentInput().value = ''
 }
 
 
@@ -31,9 +30,9 @@ const submitComment = (event) => {
     event.preventDefault();
 
     const comment = {
-         userId: StorageServices.user.get().getId(),
-         comment_text: getInputCommentValue()
-        };
+        userId: StorageServices.user.get().getId(),
+        comment_text: getInputCommentValue()
+    };
 
     CommentService.apiPostComment(comment).then(result => {
         alert(result)
