@@ -32,6 +32,10 @@ body {
     padding: 5px;
 }
 
+#form-comentario textarea {
+    height: 40px;
+}
+
 .btn-submit{
     margin-top: 25px;
     padding: 10px;
@@ -102,8 +106,8 @@ header{
 }
 
 #user-profile {
-    float: right;
-    margin: 20px 20px auto auto !important;
+    float: left;
+    margin: 20px auto auto 20px !important;
 }
 
 #user-profile p{
