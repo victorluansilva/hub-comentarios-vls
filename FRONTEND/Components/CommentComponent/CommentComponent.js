@@ -93,4 +93,4 @@ const CommentComponent = {
     },
 }
 
-export { CommentComponent, setInputComment, setAuthorCommentField }
+export { CommentComponent, setInputComment, setAuthorCommentField, loadComment }
