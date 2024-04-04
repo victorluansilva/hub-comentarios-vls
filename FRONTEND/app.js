@@ -53,9 +53,8 @@ const main = `
     </div>
     <!--FEED: DISPLAY COMMENTS -->
     <div class="feed comments col my-3 p-3 bg-body rounded shadow">
-        <h6 class="border-bottom pb-2 mb-0">Feed</h6>
         <div id="comment-feed">
-
+        
         </div>
         <small class="d-block text-end mt-3">
             <a href="#">All updates</a>

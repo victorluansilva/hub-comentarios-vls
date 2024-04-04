@@ -71,7 +71,7 @@ server.get('/user-comments', (req, res) => {
         } else if (result.length <= 0) {
             return res.status(500).json({ success: false, error: 'Nenhum comentário encontrado com este usuário' });
         } else {
-            res.json({ success: true, comment: result });
+            res.json({ success: true, comments: result });
         }
      })           
 }

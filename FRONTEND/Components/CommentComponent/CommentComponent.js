@@ -58,7 +58,7 @@ const loadComment = () => {
 
 const displayComment = (comments) => {
     const divFeed = document.getElementById('comment-feed');
-    divFeed.innerHTML = ``
+    divFeed.innerHTML = `<h5 class="border-bottom pb-2 mb-0">Feed</h5>`
     comments.forEach(item => {
         const divDisplay = document.createElement('div');
         divDisplay.className = 'd-flex text-body-secondary pt-3 border-bottom'
