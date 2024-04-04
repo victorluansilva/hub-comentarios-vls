@@ -1,4 +1,5 @@
 import { StorageServices } from "../../services/localStorage.service.js";
+import UserService from "../../services/user.services.js";
 import { randomColors } from "../../utils.js";
 
 const loadUserData = () => {
@@ -22,11 +23,16 @@ fill="none">
 `
 }
 
+
+
 const displayUserData = (user) => {
     const userContent = document.getElementById('user-content');
     userContent.innerHTML = ``
     const newDiv = document.createElement('div');
     newDiv.innerHTML = `
+    <div>
+    <button id='btnMeusComentarios' class='btn-submit btn btn-dark my-2'>Meus Comentários</button>
+    </div>
     ${iconeUsuario(randomColors().dark)}
     <div class="row d-inline-flex text-body-secondary rounded">
         <div class="col-4">
@@ -55,6 +61,18 @@ const displayUserData = (user) => {
 
     userContent.appendChild(newDiv)
 
+    const btnMeusComentarios = document.getElementById('btnMeusComentarios');
+    btnMeusComentarios.addEventListener('click', handleMeusComentarios);
+
+}
+
+const handleMeusComentarios = () => {
+    const userId = StorageServices.user.get().getId()
+    UserService.apiGetUserComments(userId).then(data =>{
+        displayUserComments(data)
+    }).catch(error =>{
+        alert(error.message)
+    })
 }
 
 const displayUserComments = (comments) => {

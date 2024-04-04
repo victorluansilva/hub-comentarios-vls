@@ -52,8 +52,8 @@ server.get('/user', (req, res) => {
 
 // LISTAR TODOS COMENTÁRIOS DO USUÁRIO
 
-server.get('/user-comments', (req, res) => {
-    const { userId } = req.body
+server.get('/user-comments/:userId', (req, res) => {
+    const userId = req.params.userId;
     const query = `SELECT 
                     comment.id, 
                     user.username AS author, 

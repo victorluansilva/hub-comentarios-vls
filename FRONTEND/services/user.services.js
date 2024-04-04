@@ -5,13 +5,7 @@ const URL_API = "http://localhost:7000";
 const UserService = {
     apiGetUserComments: (userId) => {
         return new Promise((resolve, reject) => {
-            fetch(`${URL_API}/user-comments`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userId)
-            })
+            fetch(`${URL_API}/user-comments/${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
