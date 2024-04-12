@@ -66,7 +66,7 @@ const main = `
 
 
 
-const App = {
+const MainView = {
     build: () => {
         const appStructure = header + main;
         document.body.innerHTML = ``;
@@ -74,4 +74,4 @@ const App = {
     }
 }
 
-export default App;
+export default MainView;

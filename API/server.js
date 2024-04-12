@@ -15,6 +15,9 @@ server.use('/comment', CommentRouter);
 const UserRouter = require('./src/routes/user.route');
 server.use('/user', UserRouter);
 
+const LoginRouter = require('./src/routes/login.route');
+server.use('/session', LoginRouter);
+
 const PORT = 7000;
 
 

@@ -1,7 +1,7 @@
-import { User } from "../../models/user.model.js";
-import { LoginService } from "../../services/login.services.js";
-import { StorageServices } from "../../services/localStorage.service.js";
-import { setAuthorCommentField } from "../CommentComponent/CommentComponent.js";
+import { User } from "../models/user.model.js";
+import { LoginService } from "../services/login.service.js";
+import { StorageServices } from "../services/localStorage.service.js";
+import { setAuthorCommentField } from "./comment.component.js";
 
 
 const getLoginInputs = () => {

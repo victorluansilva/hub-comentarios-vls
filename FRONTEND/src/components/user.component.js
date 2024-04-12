@@ -1,7 +1,7 @@
-import { StorageServices } from "../../services/localStorage.service.js";
-import UserService from "../../services/user.services.js";
-import { formatDate, randomColors } from "../../utils.js";
-import { loadComment } from "../CommentComponent/CommentComponent.js";
+import { StorageServices } from "../services/localStorage.service.js";
+import UserService from "../services/user.service.js";
+import { formatDate, randomColors } from "../utils.js";
+import { loadComment } from "./comment.component.js";
 
 const loadUserData = () => {
 

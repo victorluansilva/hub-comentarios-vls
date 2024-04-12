@@ -1,7 +1,7 @@
-import { formatDate, randomColors } from "../../utils.js";
-import { CommentService } from '../../services/comment.services.js'
-import { Comment } from "../../models/comment.model.js";
-import { StorageServices } from "../../services/localStorage.service.js";
+import { formatDate, randomColors } from "../utils.js";
+import { CommentService } from '../services/comment.service.js'
+import { Comment } from "../models/comment.model.js";
+import { StorageServices } from "../services/localStorage.service.js";
 
 
 const getCommentInput = () => {

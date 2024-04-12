@@ -4,7 +4,6 @@ const db = require('../db_connect');
 const LoginService = {
     authUser: (username, password) => {
         return new Promise((resolve, reject) => {
-            const { username, password } = req.body;
             db.query('SELECT * FROM user WHERE username = ? AND password = ?',
                 [username, password], (err, results) => {
                     if (err) {
