@@ -8,9 +8,9 @@ const LoginService = {
                 [username, password], (err, results) => {
                     if (err) {
                         reject(err);
-                    }else if (results.lenght > 0) {
+                    }else if (results.length > 0) {
                         const user = results[0];
-                        const token = jwt.sign(user, process.env.JWT_SECRET, {expiresIn: '1hs'})
+                        const token = jwt.sign(user, process.env.JWT_SECRET, {expiresIn: '1h'})
                         resolve(token);
                     } else {
                         reject('Usuário ou senha inválidos');
