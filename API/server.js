@@ -1,31 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql2')
-const cors = require('cors')
-require('dotenv').config()
-
+const cors = require('cors');
 
 const server = express();
 
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
-server.use(cors());
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+server.use(cors());
+
+const CommentRouter = require('./src/routes/comment.route');
+server.use('/comment', CommentRouter);
 
 const PORT = 7000;
-
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-})
-
-db.connect((err) => {
-    if (err) return console.log(err);
-    console.log('Conectado com sucesso!');
-})
 
 server.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -44,13 +30,6 @@ server.post('/login', (req, res) => {
         })
 })
 
-server.get('/user', (req, res) => {
-    db.query('SELECT * FROM user', (err, results) => {
-        res.json({ success: true, user: results });
-    });
-});
-
-// LISTAR TODOS COMENTÁRIOS DO USUÁRIO
 
 server.get('/user-comments/:userId', (req, res) => {
     const userId = req.params.userId;
@@ -77,27 +56,6 @@ server.get('/user-comments/:userId', (req, res) => {
 }
 
 )
-
-// LISTAR COMENTÁRIOS
-server.get('/comment', (req, res) => {
-    const queryByUser = `SELECT comment.id,
-                            user.username as author,
-                            comment.comment_text,
-                            comment.created_at,
-                            comment.updated_at
-                        FROM comment
-                    INNER JOIN user ON comment.userId = user.id
-                    ORDER BY comment.updated_at DESC;`
-    // const queryList = `SELECT * FROM comment`
-    db.query(queryByUser, (err, results) => {
-        if (err) {
-            return res.status(500).json({ success: false, error: 'Internal server error' });
-        }
-        res.json({ success: true, comment: results });
-    });
-});
-
-// ADICIONAR COMMENT
 
 server.post('/comment', (req, res) => {
     const { userId, comment_text } = req.body;
