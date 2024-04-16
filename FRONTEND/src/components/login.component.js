@@ -1,4 +1,3 @@
-import { User } from "../models/user.model.js";
 import { LoginService } from "../services/login.service.js";
 import { setCommentField } from "./comment.component.js";
 
@@ -15,11 +14,11 @@ const handleShowHide = () => {
     const loginTag = document.getElementById('login-form');
     const userProfile = document.getElementById('user-profile')
 
-    if (newCommentTag.classList.contains('disabled')) {
+    if (newCommentTag.classList.contains('disabled') && LoginService.isLoggedIn()) {
         newCommentTag.classList.remove('disabled');
         userProfile.classList.remove('disabled');
         loginTag.classList.add('disabled');
-    } else {
+    } else if (!LoginService.isLoggedIn()) {
         newCommentTag.classList.add('disabled');
         userProfile.classList.add('disabled');
         loginTag.classList.remove('disabled');
@@ -35,6 +34,14 @@ const userProfileHeader = (name) => {
     </p>`;
 }
 
+const setSignedUser = () => {
+    const user = LoginService.getUserSession()
+    userProfileHeader(user.getFirstname());
+    setCommentField(user);
+    handleShowHide();
+
+}
+
 const handleLogin = (event) => {
     event.preventDefault();
     const { username, password } = getLoginInputs();
@@ -44,10 +51,8 @@ const handleLogin = (event) => {
     }
     LoginService.apiAuthUser(usr).then(result => {
         alert(result)
-        const user = LoginService.getUserSession()
-        handleShowHide();
-        userProfileHeader(user.getFirstname());
-        setCommentField(user);
+        setSignedUser()
+        
     }).catch(error => {
         alert(`Login inválido. Erro:${error.message}`)
     })
@@ -58,7 +63,7 @@ const LoginComponent = {
     run: () => {
         const formLogin = document.getElementById('formLogin');
         formLogin.addEventListener('submit', handleLogin);
-    }
+    },
 }
 
-export { LoginComponent }
+export { LoginComponent, setSignedUser }
