@@ -17,7 +17,30 @@ const CommentService = {
                 resolve(results);
             });
         });
+    },
+    getDBCommentsByUserId: (userId) => {
+        return new Promise((resolve, reject) => {
+            const query = `SELECT 
+                            comment.id, 
+                            user.username AS author, 
+                            comment.comment_text, 
+                            comment.created_at,
+                            comment.updated_at
+                        FROM comment 
+                        INNER JOIN user 
+                        ON comment.userId = user.id
+                        WHERE userId = ?`
+
+            db.query(query, [userId], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else if (result.length <= 0) {
+                    reject('Nenhum comentário encontrado com este usuário');
+                } else {
+                    resolve(result);
+                }
+            })
+        })
     }
 }
 module.exports = CommentService;
-

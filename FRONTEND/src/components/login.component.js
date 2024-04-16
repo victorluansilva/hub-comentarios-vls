@@ -1,4 +1,4 @@
-import { LoginService } from "../services/login.service.js";
+import LoginService from "../services/login.service.js";
 import { setCommentField } from "./comment.component.js";
 
 
@@ -35,7 +35,7 @@ const userProfileHeader = (name) => {
 }
 
 const setSignedUser = () => {
-    const user = LoginService.getUserSession()
+    const user = LoginService.getUserSession();
     userProfileHeader(user.getFirstname());
     setCommentField(user);
     handleShowHide();
@@ -52,7 +52,7 @@ const handleLogin = (event) => {
     LoginService.apiAuthUser(usr).then(result => {
         alert(result)
         setSignedUser()
-        
+
     }).catch(error => {
         alert(`Login inválido. Erro:${error.message}`)
     })

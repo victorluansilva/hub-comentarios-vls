@@ -56,4 +56,4 @@ const LoginService = {
   }
 };
 
-export { LoginService }
+export default LoginService

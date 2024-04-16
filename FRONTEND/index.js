@@ -2,7 +2,7 @@ import { LoginComponent, setSignedUser } from "./src/components/login.component.
 import { CommentComponent, loadComment } from "./src/components/comment.component.js";
 import { UserComponent } from "./src/components/user.component.js";
 import MainView from "./src/view/main.view.js";
-import { LoginService } from "./src/services/login.service.js";
+import LoginService  from "./src/services/login.service.js";
 
 const main = {
     run: () => {

@@ -1,10 +1,11 @@
 import UserService from "../services/user.service.js";
+import LoginService from "../services/login.service.js";
 import { formatDate, randomColors } from "../utils.js";
 import { loadComment } from "./comment.component.js";
 
 const loadUserData = () => {
-
-    // displayUserData()
+    const user = LoginService.getUserSession();
+    displayUserData(user);
 }
 
 const iconeUsuario = (avatarColor) => {
@@ -67,10 +68,10 @@ const displayUserData = (user) => {
 }
 
 const handleMeusComentarios = () => {
-    // const userId = 
-    UserService.apiGetUserComments(userId).then(data =>{
+    const user = LoginService.getUserSession();
+    UserService.apiGetUserComments(user.id).then(data => {
         displayUserComments(data)
-    }).catch(error =>{
+    }).catch(error => {
         alert(error.message)
     })
 }
@@ -105,13 +106,15 @@ const displayUserComments = (comments) => {
 const handleShowHideUser = () => {
     const userDataTag = document.getElementById('user-data');
     const newCommentTag = document.getElementById('form-comentario');
-    if (userDataTag.classList.contains('disabled')) {
+    if (userDataTag.classList.contains('disabled') && LoginService.isLoggedIn()) {
         userDataTag.classList.remove('disabled');
         newCommentTag.classList.add('disabled');
         loadUserData();
     } else {
         userDataTag.classList.add('disabled');
-        newCommentTag.classList.remove('disabled');
+        if (LoginService.isLoggedIn()) {
+            newCommentTag.classList.remove('disabled');
+        }
         loadComment()
     }
 }

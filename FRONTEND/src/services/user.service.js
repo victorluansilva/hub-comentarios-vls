@@ -3,9 +3,9 @@ import { mapComments } from "../models/comment.model.js";
 const URL_API = "http://localhost:7000";
 
 const UserService = {
-    apiGetUserComments: (userId) => {
+    apiGetUserComments: (id) => {
         return new Promise((resolve, reject) => {
-            fetch(`${URL_API}/user-comments/${userId}`)
+            fetch(`${URL_API}/comment/${id}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
