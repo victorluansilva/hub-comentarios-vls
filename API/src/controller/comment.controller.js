@@ -8,7 +8,7 @@ const CommentController = {
         })
     },
     getCommentsByUserId: (req, res) => {
-        const {id} = req.params.userId;
+        const userId = req.params.userId;
         CommentService.getDBCommentsByUserId(userId).then( resultado =>{
             res.json({success: true, comments: resultado})
         }).catch(error => {
