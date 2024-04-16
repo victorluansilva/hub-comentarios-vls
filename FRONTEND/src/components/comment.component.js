@@ -1,7 +1,6 @@
 import { formatDate, randomColors } from "../utils.js";
 import { CommentService } from '../services/comment.service.js'
 import { Comment } from "../models/comment.model.js";
-import { StorageServices } from "../services/localStorage.service.js";
 
 
 const getCommentInput = () => {
@@ -19,9 +18,9 @@ const clearCommentField = () => {
 }
 
 
-const setAuthorCommentField = (usr) => {
+const setCommentField = ({firstname, lastname}) => {
     const inputAuthor = document.getElementById('inputAuthor');
-    inputAuthor.value = usr.firstname + ' ' + usr.lastname;
+    inputAuthor.value = firstname + ' ' + lastname;
     inputAuthor.style.backgroundColor = '#444'
     inputAuthor.style.color = '#FFF'
 }
@@ -30,7 +29,7 @@ const submitComment = (event) => {
     event.preventDefault();
 
     const comment = {
-        userId: StorageServices.user.get().getId(),
+        userId: null,
         comment_text: getInputCommentValue()
     };
 
@@ -93,4 +92,4 @@ const CommentComponent = {
     },
 }
 
-export { CommentComponent, setInputComment, setAuthorCommentField, loadComment }
+export { CommentComponent, setInputComment, setCommentField, loadComment }

@@ -1,11 +1,10 @@
-import { StorageServices } from "../services/localStorage.service.js";
 import UserService from "../services/user.service.js";
 import { formatDate, randomColors } from "../utils.js";
 import { loadComment } from "./comment.component.js";
 
 const loadUserData = () => {
 
-    displayUserData(StorageServices.user.get())
+    // displayUserData()
 }
 
 const iconeUsuario = (avatarColor) => {
@@ -68,7 +67,7 @@ const displayUserData = (user) => {
 }
 
 const handleMeusComentarios = () => {
-    const userId = StorageServices.user.get().getId()
+    // const userId = 
     UserService.apiGetUserComments(userId).then(data =>{
         displayUserComments(data)
     }).catch(error =>{

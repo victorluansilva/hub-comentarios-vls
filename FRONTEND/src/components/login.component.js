@@ -1,7 +1,6 @@
 import { User } from "../models/user.model.js";
 import { LoginService } from "../services/login.service.js";
-import { StorageServices } from "../services/localStorage.service.js";
-import { setAuthorCommentField } from "./comment.component.js";
+import { setCommentField } from "./comment.component.js";
 
 
 const getLoginInputs = () => {
@@ -15,7 +14,7 @@ const handleShowHide = () => {
     const newCommentTag = document.getElementById('form-comentario');
     const loginTag = document.getElementById('login-form');
     const userProfile = document.getElementById('user-profile')
-   
+
     if (newCommentTag.classList.contains('disabled')) {
         newCommentTag.classList.remove('disabled');
         userProfile.classList.remove('disabled');
@@ -27,7 +26,7 @@ const handleShowHide = () => {
     }
 }
 
-const userProfileTitle = (name) => {
+const userProfileHeader = (name) => {
     const aLink = document.getElementById("user-profile-title");
     aLink.innerHTML = ``;
     aLink.innerHTML = `<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -39,22 +38,19 @@ const userProfileTitle = (name) => {
 const handleLogin = (event) => {
     event.preventDefault();
     const { username, password } = getLoginInputs();
-
-    const usr = new User(null, username.value, password.value)
-
+    const usr = {
+        username: username.value,
+        password: password.value
+    }
     LoginService.apiAuthUser(usr).then(result => {
-
-        StorageServices.user.store(result);
-        const currentUser = StorageServices.user.get();
-
-        userProfileTitle(currentUser.getFirstname())
-        setAuthorCommentField(currentUser);
-
+        alert(result)
+        const user = LoginService.getUserSession()
         handleShowHide();
+        userProfileHeader(user.getFirstname());
+        setCommentField(user);
     }).catch(error => {
         alert(`Login inválido. Erro:${error.message}`)
     })
-
 }
 
 
