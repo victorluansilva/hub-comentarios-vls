@@ -14,6 +14,30 @@ const CommentController = {
         }).catch(error => {
             res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
         })
-    }
+    },
+    addComment: (req, res) => {
+        const comment = req.body;
+        CommentService.addDBNewComment(comment).then( () =>{
+            res.json({success: true, message: 'Comentário adicionado com sucesso!'})
+        }).catch(error => {
+            res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
+        });
+    },
+    updateComment: (req, res) => {
+        const comment = req.body;
+        CommentService.updateDBComment(comment).then( () =>{
+            res.json({success: true, message: 'Comentário atualizado com sucesso!'})
+        }).catch(error => {
+            res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
+        });
+    },
+    deleteComment: (req, res) => {
+        const id = req.params.id;
+        CommentService.deleteDBComment(id).then( () =>{
+            res.json({success: true, message: 'Comentário deletado com sucesso!'})
+        }).catch(error => {
+            res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
+        });
+    },
 }
 module.exports = CommentController;

@@ -41,6 +41,31 @@ const CommentService = {
                 }
             })
         })
+    },
+    addDBNewComment: ({ userId, comment_text }) => {
+        db.query('INSERT INTO comment (userId, comment_text) VALUES (?, ?)', [userId, comment_text], (err, result) => {
+            if (err) {
+                reject('Error inserting comment');
+            }
+            resolve();
+        })
+    },
+    updateDBComment: ({ id, comment_text }) => {
+        db.query('UPDATE comment SET comment_text =? WHERE id =?', [comment_text, id], (err, result) => {
+            if (err) {
+                reject('Error updating comment');
+            }
+            resolve();
+        })
+    },
+    deleteDBComment: (id) => {
+        db.query('DELETE FROM comment WHERE id =?', [id], (err, result) => {
+            if (err) {
+                reject('Error deleting comment');
+            }
+            resolve();
+        })
     }
+
 }
 module.exports = CommentService;
