@@ -36,9 +36,9 @@ const userProfileHeader = (name) => {
 
 const setSignedUser = () => {
     const user = LoginService.getUserSession();
+    handleShowHide();
     userProfileHeader(user.getFirstname());
     setCommentField(user);
-    handleShowHide();
 
 }
 

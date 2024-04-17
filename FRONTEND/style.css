@@ -80,7 +80,7 @@ body {
     color:white;
     background-color: rgb(100,42,42);
 }
-.feed{
+#feed{
     max-height: 80vh;
 } 
 #comment-feed{
