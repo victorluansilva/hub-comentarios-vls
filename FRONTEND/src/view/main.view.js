@@ -80,6 +80,7 @@ const MainView = {
 
         comments.forEach(item => {
             const commentDiv = document.createElement('div');
+            commentDiv.setAttribute("id", `${item.getAuthor()}-${item.getId()}`);
             commentDiv.className = 'd-flex text-body-secondary pt-3 border-bottom'
             commentDiv.innerHTML = `
             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"

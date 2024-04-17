@@ -18,6 +18,33 @@ const CommentService = {
             });
         });
     },
+    getDBCommentById:(id) => {
+        return new Promise((resolve, reject) => {
+            const query = `
+            SELECT comment.id,
+                    comment.userId,
+                    user.username as author,
+                    comment.comment_text,
+                    comment.created_at,
+                    comment.updated_at
+                    FROM comment
+                INNER JOIN user ON comment.userId = user.id
+                WHERE comment.id = ?
+            `
+            db.query(query, [id], (error, result) =>{
+                if (error) {
+                    reject(error.message);
+                }
+                if (result.length > 0) {
+                    resolve(result);
+                } else {
+                    reject('Comentário não encontrado');
+                }
+            })
+
+
+        })
+    },
     getDBCommentsByUserId: (userId) => {
         return new Promise((resolve, reject) => {
             const query = `SELECT 

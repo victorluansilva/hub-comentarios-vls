@@ -15,6 +15,15 @@ const CommentController = {
             res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
         })
     },
+    getCommentById: (req,res) => {
+        const id = req.params.id;
+        CommentService.getDBCommentById(id).then( resultado =>{
+            res.json({success: true, comment: resultado})
+        }).catch(error => {
+            res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
+        })
+    }
+    ,
     addComment: (req, res) => {
         const comment = req.body;
         CommentService.addDBNewComment(comment).then( () =>{

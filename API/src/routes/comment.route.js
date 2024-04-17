@@ -4,6 +4,8 @@ const CommentRouter = express.Router();
 
 CommentRouter.get('/', CommentController.getComments);
 
+CommentRouter.get('/:id', CommentController.getCommentById);
+
 CommentRouter.get('/user/:userId', CommentController.getCommentsByUserId);
 
 CommentRouter.post('/add', CommentController.addComment);
