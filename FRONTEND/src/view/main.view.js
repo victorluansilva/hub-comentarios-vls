@@ -67,7 +67,7 @@ const MainView = {
         document.body.innerHTML = ``;
         document.body.innerHTML = appStructure;
     },
-    commentsUpdate: (comments, title) => {
+    commentsUpdate: (comments, title, handler) => {
         const divFeed = document.getElementById('feed');
         divFeed.innerHTML = ``
 
@@ -101,6 +101,12 @@ const MainView = {
             commentsGroup.appendChild(commentDiv);
         })
 
+        if (handler) {
+            commentsGroup.addEventListener('click', handler);
+            commentsGroup.addEventListener('contextmenu', handler);
+        }
+
+
         divFeed.appendChild(commentsGroup);
 
         const smallTag = document.createElement('small');
@@ -110,6 +116,8 @@ const MainView = {
         `;
 
         divFeed.appendChild(smallTag);
+
+
     }
 }
 

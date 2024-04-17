@@ -17,6 +17,13 @@ const clearCommentField = () => {
     getCommentInput().value = ''
 }
 
+// HANDLER DE EDIÇÃO DE COMENTÁRIOS
+
+const handleClick = (event) => {
+    event.preventDefault()
+    
+    console.log(event)
+}
 
 const setCommentField = ({firstname, lastname}) => {
     const inputAuthor = document.getElementById('inputAuthor');
@@ -48,7 +55,7 @@ const loadComment = () => {
         const comments = result.map(
             (comment) => new Comment(comment.id, comment.userId, comment.author, comment.comment_text, comment.created_at, comment.updated_at)
         );
-        MainView.commentsUpdate(comments)
+        MainView.commentsUpdate(comments,'Feed', handleClick)
     }).catch(error => {
         console.error(error);
         alert(error);
