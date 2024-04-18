@@ -36,7 +36,7 @@ const CommentService = {
                     reject(error.message);
                 }
                 if (result.length > 0) {
-                    resolve(result);
+                    resolve(result[0]);
                 } else {
                     reject('Comentário não encontrado');
                 }
@@ -81,7 +81,7 @@ const CommentService = {
     },
     updateDBComment: ({ id, comment_text }) => {
         return new Promise((resolve, reject) => {
-            db.query('UPDATE comment SET comment_text =? WHERE id =?', [comment_text, id], (err, result) => {
+            db.query('UPDATE comment SET comment_text = ? WHERE id = ?', [comment_text, id], (err, result) => {
                 if (err) {
                     reject('Error updating comment');
                 }
