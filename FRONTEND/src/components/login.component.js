@@ -25,19 +25,25 @@ const handleShowHide = () => {
     }
 }
 
-const userProfileHeader = (name) => {
+const userProfileHeader = (name, imgLink) => {
     const aLink = document.getElementById("user-profile-title");
     aLink.innerHTML = ``;
-    aLink.innerHTML = `<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+    aLink.innerHTML = `<img src="${imgLink}" alt="mdo" width="32" height="32" class="rounded-circle">
     <p class="small lh-sm text-gray-dark">
         <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
     </p>`;
 }
 
+const setCommentField = () => {
+    const { username, imgLink } = LoginService.getUserSession();
+    const authorProfile = document.getElementById('authorProfile');
+    authorProfile.innerHTML = userProfileHeader(username, imgLink)
+}
+
 const setSignedUser = () => {
     const user = LoginService.getUserSession();
     handleShowHide();
-    userProfileHeader(user.getFirstname());
+    userProfileHeader(user.getFirstname(), user.getImgLink());
     setCommentField(user);
 
 }
@@ -66,4 +72,4 @@ const LoginComponent = {
     },
 }
 
-export { LoginComponent, setSignedUser }
+export { LoginComponent, setSignedUser, userProfileHeader }

@@ -31,7 +31,7 @@ const LoginService = {
     if (token) {
       const payload = decodeJWT(token);
       if (payload) {
-        const user = new User(payload.id, payload.username, payload.password, payload.firstname, payload.lastname)
+        const user = new User(payload.id, payload.username, payload.password, payload.firstname, payload.lastname, payload.imgLink)
         return user;
       } else {
         return null;

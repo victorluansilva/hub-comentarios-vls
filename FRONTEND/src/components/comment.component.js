@@ -49,13 +49,6 @@ const handleClick = (event) => {
     });
 }
 
-const setCommentField = ({ firstname, lastname }) => {
-    const inputAuthor = document.getElementById('inputAuthor');
-    inputAuthor.value = firstname + ' ' + lastname;
-    inputAuthor.style.backgroundColor = '#444'
-    inputAuthor.style.color = '#FFF'
-}
-
 const submitComment = (event) => {
     event.preventDefault();
 
@@ -106,4 +99,4 @@ const CommentComponent = {
     },
 }
 
-export { CommentComponent, setInputComment, setCommentField, loadComment }
+export { CommentComponent, setInputComment, loadComment }

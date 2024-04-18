@@ -36,8 +36,7 @@ const main = `
         <div class="comments shadow disabled" id="form-comentario">
             <h3>Novo Comentário</h3>
             <form id="formComment">
-                <label for="autor">Autor</label>
-                <input type="text" name="autor" id="inputAuthor" readonly>
+                <div id="authorProfile"></div>
                 <label for="comentario">Digite seu comentário</label>
                 <textarea name="comentario" id="inputComment" cols="30" rows="10" required></textarea>
                 <button type="submit" class="btn-submit btn btn-dark my-2">Enviar</button>
