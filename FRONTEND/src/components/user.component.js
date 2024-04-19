@@ -93,13 +93,17 @@ const handleShowHideUser = () => {
     }
 }
 
+// const listenerToBtnMeusDados = () => {
+//     const btnMeusDados = document.getElementById('btnMeusDados');
+//         btnMeusDados.addEventListener('click', handleShowHideUser);
+// }
+
 const UserComponent = {
     run: () => {
-        const btnMeusDados = document.getElementById('btnMeusDados');
-        btnMeusDados.addEventListener('click', handleShowHideUser);
+        
         const btnSairMDados = document.getElementById('btnSairMDados');
         btnSairMDados.addEventListener('click', handleShowHideUser);
     }
 }
 
-export { UserComponent }
+export { UserComponent, handleShowHideUser }

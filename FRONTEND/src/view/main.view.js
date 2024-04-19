@@ -3,19 +3,10 @@ const header = `
 <!-- HEADER -->
 <header>
      <!-- USER PROFILE -->
-    <div id="user-profile" class="flex-shrink-0 dropdown m-2 disabled">
-        <a id="user-profile-title" href="#" class="d-flex flex-row link-body-emphasis text-decoration-none " data-bs-toggle="dropdown"
-            aria-expanded="false">
-            
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#" id="btnMeusDados">Meus dados</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" id="btnSair" href="#">Sair</a></li>
-        </ul>
-    </div>
+     <div id="user-profile" class="disabled">
+        <div id="user-profile-title">
+        </div>
+     </div>
 </header>
 `
 

@@ -14,7 +14,7 @@ body {
     border-radius: 10px;
 }
 
-.comments *{
+.comments * :not(.dropdown-menu, .date-style){
     display: block;
 }
 

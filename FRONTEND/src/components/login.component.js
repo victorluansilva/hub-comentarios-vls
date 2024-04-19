@@ -1,6 +1,5 @@
 import LoginService from "../services/login.service.js";
-import { setCommentField } from "./comment.component.js";
-
+import { handleShowHideUser } from "../components/user.component.js";
 
 const getLoginInputs = () => {
     return {
@@ -25,26 +24,54 @@ const handleShowHide = () => {
     }
 }
 
-const userProfileHeader = (name, imgLink) => {
-    const aLink = document.getElementById("user-profile-title");
-    aLink.innerHTML = ``;
-    aLink.innerHTML = `<img src="${imgLink}" alt="mdo" width="32" height="32" class="rounded-circle">
-    <p class="small lh-sm text-gray-dark">
-        <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
-    </p>`;
+const userProfile = (id, name, imgLink,) => {
+ return ` <div class=" dropdown flex-shrink-0 m-2 ">
+        <a href="#" class="d-flex flex-row link-body-emphasis text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="${imgLink}" alt="mdo" width="32" height="32" class="rounded-circle">
+                <p class="small lh-sm text-gray-dark">
+                    <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
+                </p>
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+            <li><a id="btnMeusDados${id}" class="dropdown-item" href="#" >Meus dados</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a id="btnSair${id}" class="dropdown-item" href="#">Sair</a></li>
+        </ul>
+    </div>
+    `;
 }
 
-const setCommentField = () => {
+const setUserProfile = () => {
     const { username, imgLink } = LoginService.getUserSession();
+
+    const navProfileLink = document.getElementById("user-profile-title");
+    navProfileLink.innerHTML = '';
+    navProfileLink.innerHTML = userProfile(0,username, imgLink);
+   
+    const btnMeusDados0 = document.getElementById('btnMeusDados0');
+    btnMeusDados0.addEventListener('click', handleShowHideUser);
+    
+    const btnSair0 = document.getElementById('btnSair0');
+    btnSair0.addEventListener('click', handleShowHideUser);
+    
+
     const authorProfile = document.getElementById('authorProfile');
-    authorProfile.innerHTML = userProfileHeader(username, imgLink)
+    authorProfile.innerHTML = '';
+    authorProfile.innerHTML = userProfile(1,username, imgLink);
+
+    const btnMeusDados1 = document.getElementById('btnMeusDados1');
+    btnMeusDados1.addEventListener('click', handleShowHideUser);
+    
+    const btnSair1 = document.getElementById('btnSair1');
+    btnSair1.addEventListener('click', handleShowHideUser);
+    
 }
 
 const setSignedUser = () => {
-    const user = LoginService.getUserSession();
     handleShowHide();
-    userProfileHeader(user.getFirstname(), user.getImgLink());
-    setCommentField(user);
+    setUserProfile();
 
 }
 
@@ -72,4 +99,4 @@ const LoginComponent = {
     },
 }
 
-export { LoginComponent, setSignedUser, userProfileHeader }
+export { LoginComponent, setSignedUser, userProfile }

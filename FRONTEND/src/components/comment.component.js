@@ -76,7 +76,6 @@ const submitComment = (event) => {
 }
 
 const loadComment = () => {
-    console.log(_subimitState)
     // Dados carregados da API
     CommentService.apiGetComment().then(result => {
         const comments = result.map(
