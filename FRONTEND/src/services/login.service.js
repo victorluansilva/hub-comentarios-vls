@@ -53,6 +53,27 @@ const LoginService = {
       console.log(error);
     }
 
+  },
+  logout: () => {
+    return new Promise((resolve, reject) => {
+      fetch(`${URL_API}/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            resolve();
+          } else {
+            reject('Erro ao fazer logout. Tente novamente.');
+          }
+        })
+        .catch(error => {
+          reject('Erro na requisição AJAX:', error);
+        });
+    });
   }
 };
 

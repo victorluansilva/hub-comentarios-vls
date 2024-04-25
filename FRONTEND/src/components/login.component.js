@@ -24,13 +24,20 @@ const handleShowHide = () => {
     }
 }
 
-const userProfile = (id, name, imgLink,) => {
+
+const userIcon = (imgLink, width, height) =>{
+    return `
+    <img src="${imgLink}" alt="mdo" width="${width}" height="${height}" class="rounded-circle">
+    `
+}
+
+const userProfile = (id, name, imgLink) => {
  return ` <div class=" dropdown flex-shrink-0 m-2 ">
         <a href="#" class="d-flex flex-row link-body-emphasis text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="${imgLink}" alt="mdo" width="32" height="32" class="rounded-circle">
-                <p class="small lh-sm text-gray-dark">
-                    <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
-                </p>
+        ${userIcon(imgLink, 32, 32)}
+        <p class="small lh-sm text-gray-dark">
+        <strong class=" text-gray-dark dropdown-toggle">@${name}</strong>
+    </p> 
         </a>
         <ul class="dropdown-menu text-small shadow">
             <li><a id="btnMeusDados${id}" class="dropdown-item" href="#" >Meus dados</a></li>
@@ -54,7 +61,7 @@ const setUserProfile = () => {
     btnMeusDados0.addEventListener('click', handleShowHideUser);
     
     const btnSair0 = document.getElementById('btnSair0');
-    btnSair0.addEventListener('click', handleShowHideUser);
+    btnSair0.addEventListener('click', handleLogout);
     
 
     const authorProfile = document.getElementById('authorProfile');
@@ -65,8 +72,16 @@ const setUserProfile = () => {
     btnMeusDados1.addEventListener('click', handleShowHideUser);
     
     const btnSair1 = document.getElementById('btnSair1');
-    btnSair1.addEventListener('click', handleShowHideUser);
+    btnSair1.addEventListener('click', handleLogout);
     
+}
+
+const handleLogout = () => {
+    LoginService.logout().then(() => {
+        sessionStorage.removeItem('token');
+        sessionStorage.clear();
+        location.reload();
+    }).catch(err => alert(err));
 }
 
 const setSignedUser = () => {
@@ -99,4 +114,4 @@ const LoginComponent = {
     },
 }
 
-export { LoginComponent, setSignedUser, userProfile }
+export { LoginComponent, setSignedUser, userProfile, userIcon}

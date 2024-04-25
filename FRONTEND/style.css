@@ -114,9 +114,25 @@ header{
     margin: 5px 5px;
 }
 
-#btnMeusComentarios{
+#btnMeusComentarios, #btnEditUsuario{
     margin: 10px auto 0px auto;
     padding: 10px auto 0px auto;
     width: auto;
     float: right;
+}
+
+.groupBtnsUserData{
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: flex-end !important;
+    align-items: flex-end !important;
+    float: inline-end !important;
+}
+
+.editUsuario{
+    background-color: #11005e;
+}
+
+#userIcon{
+    border: none !important;
 }
