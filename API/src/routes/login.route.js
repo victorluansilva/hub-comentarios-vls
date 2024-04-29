@@ -7,4 +7,6 @@ LoginRouter.post('/login', LoginController.login)
 
 LoginRouter.post('/logout', LoginController.logout)
 
+LoginRouter.put('/update', LoginController.isAuthenticated, LoginController.updateUserSession)
+
 module.exports = LoginRouter;

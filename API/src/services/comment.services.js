@@ -41,8 +41,6 @@ const CommentService = {
                     reject('Comentário não encontrado');
                 }
             })
-
-
         })
     },
     getDBCommentsByUserId: (userId) => {

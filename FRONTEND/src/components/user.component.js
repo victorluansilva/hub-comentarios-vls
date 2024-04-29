@@ -105,9 +105,10 @@ const handleEditUsuarios = () => {
             password: document.getElementById('user_password').value,
             imgLink: document.getElementById('inputImgLink').value
         }
-        UserService.apitUpdateUser(user).then(resposta => {
+        LoginService.updateSessionUserData(user).then(resposta => {
             alert(resposta)
             loadUserData();
+            location.reload();
         }).catch(err => {
             console.log(err)
         });

@@ -102,7 +102,7 @@ const handleLogin = (event) => {
         setSignedUser()
 
     }).catch(error => {
-        alert(`Login inválido. Erro:${error.message}`)
+        alert(`Login inválido. Erro:${error}`)
     })
 }
 

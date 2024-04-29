@@ -29,11 +29,13 @@ const UserService = {
                .then(response => response.json())
                .then(data => {
                     if (data.success) {
-                        resolve(data.message);
+                        resolve(data.error);
                     } else {
                         reject(data.error);
                     }
-                })
+                }).catch(err => {
+                    reject(err);
+                });
         })
     },
     apiUpdataImgLink: ({id, imgLink}) => {
