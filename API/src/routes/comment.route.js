@@ -7,7 +7,7 @@ CommentRouter.get('/', CommentController.getComments);
 
 CommentRouter.get('/:id', CommentController.getCommentById);
 
-CommentRouter.get('/user/:userId', CommentController.getCommentsByUserId);
+CommentRouter.get('/user/:userId',LoginController.isAuthenticated, CommentController.getCommentsByUserId);
 
 CommentRouter.post('/add', LoginController.isAuthenticated,CommentController.addComment);
 
